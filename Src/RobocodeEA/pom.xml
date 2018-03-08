@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+	<groupId>il.ac.bgu.cs</groupId>
+	<artifactId>bpea</artifactId>
+	<version>trunk</version>
+	<relativePath>../pom.xml</relativePath>
+  </parent>
+  <groupId>il.ac.bgu.cs.ea</groupId>
+  <artifactId>RobocodeEA</artifactId>
+  <version>0.5-DEV</version>
+  <name>RobocodeEA</name>
+  <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+  <dependencies>
+  	<dependency>
+   		<groupId>edu.gmu.cs</groupId>
+   		<artifactId>ecj</artifactId>
+   		<version>22</version>
+   	</dependency>
+  	<dependency>
+  		<groupId>il.ac.bgu.cs.bp</groupId>
+  		<artifactId>RobocodeController</artifactId>
+  		<version>0.5-DEV</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>il.ac.bgu.cs.bp</groupId>
+  		<artifactId>Common</artifactId>
+  		<version>0.5-DEV</version>
+  	</dependency>
+  </dependencies>
+</project>
