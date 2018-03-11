@@ -10,7 +10,7 @@
     <module>Common</module>
 	<module>BPjsRobot</module>
 	<module>RobocodeController</module>
-	<module>robocodeea</module>
+	<module>RobocodeEA</module>
   </modules>
   <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
