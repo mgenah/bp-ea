@@ -1,0 +1,1 @@
+java -cp target\RobocodeEA-0.5-DEV.jar;..\Common\target\Common-0.5-DEV.jar;..\..\3rdParty\ECJ\jar\ecj.25.jar ec.Evolve -file src\main\resources\gprobocode.params
