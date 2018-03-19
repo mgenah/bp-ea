@@ -18,6 +18,7 @@ public class BattleRunner {
 	
 	public SummarizedBattleResults runBattle(RobocodeRobot... robocodeRobots){
 		System.setProperty("NOSECURITY", "true");
+		//TODO: choose workdir from 3rd party
 		RobocodeEngine engine = new RobocodeEngine(new java.io.File("C:\\robocode1"));
 		engine.addBattleListener(battleListener);
 		BattlefieldSpecification battlefield = new BattlefieldSpecification(800, 600);
@@ -25,12 +26,14 @@ public class BattleRunner {
 		List<RobocodeRobot> robotsList = Arrays.asList(robocodeRobots);
 		String robots = String.join(",", robotsList.stream().map(r -> r.getFullName()).collect(Collectors.toList()));
 		RobotSpecification[] robotSpec = engine.getLocalRepository(robots);
-		RobotSpecification[] localRepository = engine.getLocalRepository();
-		for(RobotSpecification r : localRepository){
-			System.out.println(r.getName());
-		}
+//		Print robots in repository:		
+//		RobotSpecification[] localRepository = engine.getLocalRepository();
+//		for(RobotSpecification r : localRepository){
+//			System.out.println(r.getName());
+//		}
 
-		BattleSpecification spec = new BattleSpecification(2, battlefield, robotSpec);
+		// TODO: The battle specification (such as number of rounds) should be received as parameter
+		BattleSpecification spec = new BattleSpecification(1, battlefield, robotSpec);
 		engine.runBattle(spec);
 		engine.waitTillBattleOver();
 		engine.close();

@@ -22,6 +22,11 @@ gp.fs.0.func.1.nc = nc2
 gp.fs.0.func.2 = il.ac.bgu.cs.ea.gp.Mul
 gp.fs.0.func.2.nc = nc2
 
+gp.nc.0 = ec.gp.GPNodeConstraints
+gp.nc.0.name = nc0
+gp.nc.0.returns = nil
+gp.nc.0.size = 0
+
 eval.problem = il.ac.bgu.cs.ea.gp.GPRobocodeProblem
 eval.problem.data = il.ac.bgu.cs.ea.gp.RobocodeEvaluationData
 

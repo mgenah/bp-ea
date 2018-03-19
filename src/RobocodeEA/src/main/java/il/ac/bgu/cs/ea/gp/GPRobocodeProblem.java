@@ -13,6 +13,8 @@ import ec.gp.koza.KozaFitness;
 import ec.simple.SimpleProblemForm;
 import ec.util.Parameter;
 import il.ac.bgu.cs.robocodecontroller.BattleRunner;
+import il.ac.bgu.cs.robocodecontroller.RobocodeRobot;
+import il.ac.bgu.cs.robocodecontroller.SummarizedBattleResults;
 
 public class GPRobocodeProblem extends GPProblem implements SimpleProblemForm{
 	private static final long serialVersionUID = 1L;
@@ -73,12 +75,13 @@ public class GPRobocodeProblem extends GPProblem implements SimpleProblemForm{
 
 	private Integer runGame(GPIndividual ind) {
 		BattleRunner runner = new BattleRunner();
-		/*SummarizedBattleResults results = runner.runBattle(RobocodeRobot.BPjsRobot, RobocodeRobot.SittingDuck);
+		SummarizedBattleResults results = runner.runBattle(RobocodeRobot.Tracker, RobocodeRobot.SittingDuck);
 		
-		if (results.Results.get(RobocodeRobot.BPjsRobot.getFullName()) > results.Results.get(RobocodeRobot.BPjsRobot.getFullName())){
+		// TODO: BPjs robot is not in the repository - needs to be fixed.
+		System.out.println(results.Results);
+		if (results.Results.get(RobocodeRobot.Tracker.getFullName()) > results.Results.get(RobocodeRobot.SittingDuck.getFullName())){
 			return 1;
-		}*/
-		System.out.println("got here");
+		}
 		return 0;
 	}
 
