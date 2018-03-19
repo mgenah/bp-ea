@@ -18,7 +18,7 @@ public class GPRobocodeProblem extends GPProblem implements SimpleProblemForm{
 	private static final long serialVersionUID = 1L;
 	private static final int NumOfGames = 1;
 	private int treeLog;
-	private String treeLogPath = "";
+	private String treeLogPath = "tree.log";
 
 	@Override
 	public void setup(EvolutionState state, Parameter base)
