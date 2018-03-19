@@ -14,6 +14,12 @@ public class NumberFeatureNode extends FeatureNode {
 	private final int maxValue;
 	private final int minValue;
 	
+	public NumberFeatureNode(){
+		this.feature = new NumberFeature("some feature", 0.0);
+		this.maxValue = 0;
+		this.minValue = 0;
+	}
+	
 	public NumberFeatureNode(NumberFeature feature, int maxValue, int minValue){
 		this.feature = feature;
 		this.maxValue = maxValue;
