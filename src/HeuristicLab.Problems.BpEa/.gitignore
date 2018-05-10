@@ -1,0 +1,8 @@
+/.vs/*
+obj/
+*.suo
+*.csproj.user
+*.DotSettings.user
+# Ignore NuGet Packages
+*.nupkg
+.nuget/*
