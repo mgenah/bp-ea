@@ -128,7 +128,7 @@ bp.registerBThread("Go To Target",function() {
 	}
 });
 
-/*bp.registerBThread("Ram target", function() {
+bp.registerBThread("Ram target", function() {
 	while(true){
 		bp.log.info('Running ram target b-thread');
 		var e = bsync({ waitFor : Scaned });	
@@ -144,7 +144,7 @@ bp.registerBThread("Go To Target",function() {
 		bsync({ request : Ahead(targetDist) });
 		bsync({ waitFor : Motiend });
 	}
-});*/
+});
 
 bp.registerBThread("Aim Target",function() {
 	var e = bsync({ waitFor : Scaned });	
