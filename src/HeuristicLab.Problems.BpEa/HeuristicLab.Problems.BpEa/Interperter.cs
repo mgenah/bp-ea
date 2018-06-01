@@ -3,13 +3,17 @@ using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using HeuristicLab.Encodings.SymbolicExpressionTreeEncoding;
 using HeuristicLab.Problems.BpEa.Symbols;
+using Renci.SshNet;
 
 namespace HeuristicLab.Problems.BpEa
 {
     public static class Interpreter
     {
+
+
         private static readonly object syncRoot = new object();
 
         public static double Evaluate(ISymbolicExpressionTree tree, string path, Robot robot, EnemyCollection enemies, string robotName = null, bool showUI = false, int nrOfRounds = 200)
@@ -21,11 +25,17 @@ namespace HeuristicLab.Problems.BpEa
             string robotsPath = Path.Combine(path, "robots", "Evaluation");
             string srcRobotPath = Path.Combine(robotsPath, robotName + ".txt");
 
-            File.WriteAllText(srcRobotPath, interpretedTree, System.Text.Encoding.Default);
+            File.WriteAllText(srcRobotPath, interpretedTree, Encoding.Default);
 
+            SshUtils.UploadFile(interpretedTree, robotName);
 
+            return RunGames();
+        }
 
-            return 0.0;
+        private static double RunGames()
+        {
+            string res = SshUtils.RunScript();
+            return Double.Parse(res);
         }
 
         private static void DeleteRobotFiles(string path, string outputname)
@@ -65,7 +75,7 @@ namespace HeuristicLab.Problems.BpEa
         public static string InterpretProgramTree(ISymbolicExpressionTreeNode node, string robotName)
         {
             var tankNode = node;
-            while (tankNode.Symbol.Name != "Tank")
+            while (tankNode.Symbol.Name != "NumericalExpression")
                 tankNode = tankNode.GetSubtree(0);
 
             string result = Interpret(tankNode);

@@ -19,6 +19,7 @@ namespace HeuristicLab.Problems.BpEa
         private const string RobocodePathParamaterName = "RobocodePath";
         private const string NrOfRoundsParameterName = "NrOfRounds";
         private const string EnemiesParameterName = "Enemies";
+        private const string FeaturesParameterName = "Features";
         private readonly IList<Robot> enemies;
         private readonly Robot robot = new Robot("BPjsRobot", "il.ac.bgu.cs.bp.bpjsrobot.BPjsRobot");
 
@@ -33,6 +34,10 @@ namespace HeuristicLab.Problems.BpEa
         }
         public IValueParameter<EnemyCollection> EnemiesParameter {
             get { return (IValueParameter<EnemyCollection>)Parameters[EnemiesParameterName]; }
+        }
+
+        public IValueParameter<EnemyCollection> FeaturesParameter {
+            get { return (IValueParameter<EnemyCollection>)Parameters[FeaturesParameterName]; }
         }
 
         public string RobocodePath {
@@ -65,11 +70,13 @@ namespace HeuristicLab.Problems.BpEa
             DirectoryValue robocodeDir = new DirectoryValue { Value = @"c:\robocode1" };
 
             EnemyCollection robotList = EnemyCollection.ReloadEnemies(robocodeDir.Value);
+            FeatureCollection features = FeatureCollection.ReloadFeatures("");
             robotList.RobocodePath = robocodeDir.Value;
 
             Parameters.Add(new FixedValueParameter<DirectoryValue>(RobocodePathParamaterName, "Path of the Robocode installation.", robocodeDir));
             Parameters.Add(new FixedValueParameter<IntValue>(NrOfRoundsParameterName, "Number of rounds a robot has to fight against each opponent.", new IntValue(3)));
             Parameters.Add(new ValueParameter<EnemyCollection>(EnemiesParameterName, "The enemies that should be battled.", robotList));
+            Parameters.Add(new ValueParameter<FeatureCollection>(FeaturesParameterName, "The enemies that should be battled.", features));
 
             Encoding = new SymbolicExpressionTreeEncoding(new Grammar(), 1000, 10);
             Encoding.FunctionArguments = 0;

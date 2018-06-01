@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\HL\HeuristicLab-master\bin\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\..\HeuristicLab\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -43,12 +43,25 @@
       <HintPath>..\..\..\..\HL\HeuristicLab-master\bin\HeuristicLab.Core-3.3.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="HeuristicLab.Core.Views-3.3, Version=3.3.0.0, Culture=neutral, PublicKeyToken=ba48961d6f65dcec, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\HL\HeuristicLab-master\bin\HeuristicLab.Core.Views-3.3.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="HeuristicLab.Data-3.3">
       <HintPath>..\..\..\..\HL\HeuristicLab-master\bin\HeuristicLab.Data-3.3.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="HeuristicLab.Encodings.SymbolicExpressionTreeEncoding-3.4">
       <HintPath>..\..\..\..\HL\HeuristicLab-master\bin\HeuristicLab.Encodings.SymbolicExpressionTreeEncoding-3.4.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="HeuristicLab.MainForm-3.3, Version=3.3.0.0, Culture=neutral, PublicKeyToken=ba48961d6f65dcec, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\HL\HeuristicLab-master\bin\HeuristicLab.MainForm-3.3.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="HeuristicLab.MainForm.WindowsForms-3.3, Version=3.3.0.0, Culture=neutral, PublicKeyToken=ba48961d6f65dcec">
       <Private>False</Private>
     </Reference>
     <Reference Include="HeuristicLab.Operators-3.3">
@@ -75,8 +88,13 @@
       <HintPath>..\..\..\..\HL\HeuristicLab-master\bin\HeuristicLab.PluginInfrastructure-3.3.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -86,6 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EnemyCollection.cs" />
+    <Compile Include="FeatureCollection.cs" />
+    <Compile Include="FeatureType.cs" />
     <Compile Include="Robot.cs" />
     <Compile Include="Symbols\FeatureTreeNode.cs" />
     <Compile Include="Symbols\Feature.cs" />
@@ -99,6 +119,15 @@
     <Compile Include="Symbols\BooleanValue.cs" />
     <Compile Include="Symbols\Number.cs" />
     <Compile Include="Symbols\NumberTreeNode.cs" />
+    <Compile Include="FeatureTypeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureTypeView.Designer.cs">
+      <DependentUpon>FeatureTypeView.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

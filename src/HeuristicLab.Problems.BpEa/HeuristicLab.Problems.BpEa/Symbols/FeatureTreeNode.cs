@@ -61,7 +61,7 @@ namespace HeuristicLab.Problems.BpEa.Symbols
         
         public override void ResetLocalParameters(IRandom random)
         {
-            name = "";
+            name = "MyFeature";
             weight = random.NextDouble() * (max - min) + min;
         }
     }

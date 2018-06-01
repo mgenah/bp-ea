@@ -36,7 +36,6 @@ namespace HeuristicLab.Problems.BpEa
         {
             #region Symbols
             var ifThenElseStat = new SimpleSymbol("IfThenElseStat", "An if statement.", 2, 3);
-            var feature = new SimpleSymbol("Feature", "A feature.", 0, 0);
 
             var boolExpr = new SimpleSymbol("BooleanExpression", "A Boolean expression.", 1, 1);
             var numericalExpr = new SimpleSymbol("NumericalExpression", "A numerical expression.", 1, 1);
@@ -49,12 +48,12 @@ namespace HeuristicLab.Problems.BpEa
 
             var conjunction = new SimpleSymbol("ConditionalAnd", "Conjunction comparator.", 2, byte.MaxValue);
             var disjunction = new SimpleSymbol("ConditionalOr", "Disjunction comparator.", 2, byte.MaxValue);
-            var negation = new SimpleSymbol("Negation", "A negation.", 1, 1);
 
             var multiplication = new SimpleSymbol("Multiplication", "Multiplication operator.", 2, byte.MaxValue);
 
             var number = new Number();
             var logicalVal = new BooleanValue();
+            var feature = new Feature();
 
             #endregion
 
@@ -64,8 +63,8 @@ namespace HeuristicLab.Problems.BpEa
             var controlStatements = new GroupSymbol(ControlStatementsName, new ISymbol[] { ifThenElseStat });
             var expressions = new GroupSymbol(ExpressionsName, new ISymbol[] { boolExpr, numericalExpr });
             var relationalOperators = new GroupSymbol(RelationalOperatorsName, new ISymbol[] { equal, lessThan, lessThanOrEqual, greaterThan, greaterThanOrEqual });
-            var logicalOperators = new GroupSymbol(LogicalOperators, new ISymbol[] { conjunction, disjunction, negation });
-            
+            var logicalOperators = new GroupSymbol(LogicalOperators, new ISymbol[] { conjunction, disjunction });
+            var leaves = new GroupSymbol("leaves", new ISymbol[] { feature, number });
             #endregion
 
             #region Adding Symbols
@@ -93,16 +92,16 @@ namespace HeuristicLab.Problems.BpEa
             AddAllowedChildSymbol(numericalExpr, feature);
             AddAllowedChildSymbol(numericalExpr, numericalOperators);
             AddAllowedChildSymbol(numericalExpr, ifThenElseStat);
-            AddAllowedChildSymbol(numericalOperators, number);
+            AddAllowedChildSymbol(numericalOperators, feature);
             AddAllowedChildSymbol(numericalOperators, numericalOperators);
 
             // Logical Expressions
             AddAllowedChildSymbol(boolExpr, logicalVal);
             AddAllowedChildSymbol(boolExpr, logicalOperators);
-            AddAllowedChildSymbol(logicalOperators, logicalVal);
             AddAllowedChildSymbol(logicalOperators, logicalOperators);
             AddAllowedChildSymbol(logicalOperators, relationalOperators);
-            AddAllowedChildSymbol(relationalOperators, numericalExpr);
+            AddAllowedChildSymbol(relationalOperators, feature, 0);
+            AddAllowedChildSymbol(relationalOperators, leaves, 1);
             #endregion
         }
     }
